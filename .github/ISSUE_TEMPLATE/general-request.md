@@ -4,11 +4,6 @@ about: A general request for an improvement for the game
 
 ---
 
----
-name: General
-about: Create a clear and concise issue
-
----
 
 **Context** 
 Why I am writing this issue.
