@@ -16,6 +16,22 @@
 #import a library to produce random integers
 from random import randint
 
+#-------------------------Initializations--------------------#
+
+#Create the board
+board = ([[0,0,0,0,0,0,0,0,0,0,0],
+          [0,0,0,0,0,0,0,0,0,0,0],
+          [0,0,0,0,0,0,0,0,0,0,0],
+          [-1,0,0,0,0,0,0,0,0,0,-1],
+          [-1,0,0,0,0,0,0,0,0,0,-1],
+          [-1,-1,0,0,0,0,0,0,0,-1,-1],
+          [-1,-1,0,0,0,0,0,0,0,-1,-1],
+          [-1,-1,-1,0,0,0,0,0,-1,-1,-1],
+          [-1,-1,-1,0,0,0,0,0,-1,-1,-1],
+          [-1,-1,-1,-1,0,0,0,-1,-1,-1,-1],
+          [-1,-1,-1,-1,0,0,0,-1,-1,-1,-1],
+          [-1,-1,-1,-1,-1,0,-1,-1,-1,-1,-1],
+          [-1,-1,-1,-1,-1,0,-1,-1,-1,-1,-1]])
 #---------------------Functions------------------------#
 
 #Function to roll 4 six sided dice
@@ -30,6 +46,15 @@ def pairDice(roll):
     pair2 = roll[2] + roll[3]
     return pair1, pair2
 
+def printBoard(board):
+    for row in range(0,13):
+        for col in range(0,11):
+            if board[12-row][col] >= 0:
+                print(board[12-row][col], end='')
+            else:
+                print(" ", end='')
+        print()
+
 #------------------------------------------------------#
 
 #-------------------------Main----------------------------#
@@ -38,7 +63,9 @@ for i in range(0,10):
     print(roll)
     pair1,pair2 = pairDice(roll)
     print(pair1,pair2)
-    
+
+printBoard(board)
+
 endProgram = input("Press Enter to end the game")
 while(endProgram == None):
     continue
