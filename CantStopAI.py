@@ -19,6 +19,7 @@ from random import randint
 #-------------------------Initializations--------------------#
 
 #Create the board
+turn = 1
 board = ([[0,0,0,0,0,0,0,0,0,0,0],
           [0,0,0,0,0,0,0,0,0,0,0],
           [0,0,0,0,0,0,0,0,0,0,0],
@@ -58,13 +59,170 @@ def printBoard(board):
 #------------------------------------------------------#
 
 #-------------------------Main----------------------------#
-for i in range(0,10):
-    roll = rollDice();
-    print(roll)
-    pair1,pair2 = pairDice(roll)
-    print(pair1,pair2)
-
-printBoard(board)
+        
+#Game beginning
+print("Welcome to the Can't Stop AI")
+while True:
+    try:
+        players = int(input("How many human players do you have? Input a number 1-3. "))
+    except ValueError:
+        print("Please choose a number!")
+        continue
+    if players < 1 or players > 3:
+        print("Please choose a number between 1 and 3.")
+        continue
+    else:
+        break
+    
+#Take the players' turns first    
+while turn > 0:
+    print("Player %d's turn." %turn)
+    #input marker 1
+    while True:
+        while True:
+            try:
+                mark1y = int(input("Enter which number your first marker was on or 0 for bust. "))
+            except ValueError:
+                print("Please choose a number!")
+                continue
+            if mark1y < 0 or mark1y > 12 or mark1y == 1:
+                print("Please choose a number between 2 and 12 or 0 for bust.")
+                continue
+            else:
+                break
+        try:
+            mark1x = int(input("Enter how high first value marker ended or 0 for bust. "))
+        except ValueError:
+            print("Please choose a number!")
+            continue
+        if mark1x == 0:
+            break
+        if mark1x >= 0 and mark1x <= 13:
+            if board[mark1x-1][mark1y-2] >= 0:
+                for row in range (0,12):
+                    if turn == 3:
+                        if board[row][mark1y-2] >= 8:
+                            board[row][mark1y-2] -= 8
+                    if turn == 2:
+                        if board[row][mark1y-2] >= 12:
+                            board[row][mark1y-2] -= 4
+                        if board[row][mark1y-2] >= 4 and board[row][mark1y-2] < 8:
+                            board[row][mark1y-2] -= 4
+                    if turn == 1:
+                        if board[row][mark1y-2] >= 14:
+                            board[row][mark1y-2] -= 2
+                        if board[row][mark1y-2] >= 10 and board[row][mark1y-2] < 12:
+                            board[row][mark1y-2] -= 2
+                        if board[row][mark1y-2] >= 6 and board[row][mark1y-2] < 8:
+                            board[row][mark1y-2] -= 2
+                        if board[row][mark1y-2] >= 2 and board[row][mark1y-2] < 4:
+                            board[row][mark1y-2] -= 2
+                board[mark1x-1][mark1y-2] += 2**(turn)
+                break
+            else:
+                print("Please choose space on the board.")
+                continue
+            
+    #Input marker 2
+    while True:
+        while True:
+            try:
+                mark2y = int(input("Enter which number your second marker was on or 0 for bust. "))
+            except ValueError:
+                print("Please choose a number!")
+                continue
+            if mark2y < 0 or mark2y > 12 or mark2y == 1:
+                print("Please choose a number between 2 and 12 or 0 for bust.")
+                continue
+            else:
+                break
+        try:
+            mark2x = int(input("Enter how high second value marker ended or 0 for bust. "))
+        except ValueError:
+            print("Please choose a number!")
+            continue
+        if mark2x == 0:
+            break
+        if mark2x >= 0 and mark2x <= 13:
+            if board[mark2x-1][mark2y-2] >= 0:
+                for row in range (0,12):
+                    if turn == 3:
+                        if board[row][mark2y-2] >= 8:
+                            board[row][mark2y-2] -= 8
+                    if turn == 2:
+                        if board[row][mark2y-2] >= 12:
+                            board[row][mark2y-2] -= 4
+                        if board[row][mark2y-2] >= 4 and board[row][mark2y-2] < 8:
+                            board[row][mark2y-2] -= 4
+                    if turn == 1:
+                        if board[row][mark2y-2] >= 14:
+                            board[row][mark2y-2] -= 2
+                        if board[row][mark2y-2] >= 10 and board[row][mark2y-2] < 12:
+                            board[row][mark2y-2] -= 2
+                        if board[row][mark2y-2] >= 6 and board[row][mark2y-2] < 8:
+                            board[row][mark2y-2] -= 2
+                        if board[row][mark2y-2] >= 2 and board[row][mark2y-2] < 4:
+                            board[row][mark2y-2] -= 2
+                board[mark2x-1][mark2y-2] += 2**(turn)
+                break
+            else:
+                print("Please choose space on the board.")
+                continue
+            
+    #Input marker 3
+    while True:
+        while True:
+            try:
+                mark3y = int(input("Enter which number your third marker was on or 0 for bust. "))
+            except ValueError:
+                print("Please choose a number!")
+                continue
+            if mark3y < 0 or mark2y > 12 or mark2y == 1:
+                print("Please choose a number between 2 and 12 or 0 for bust.")
+                continue
+            else:
+                break
+        try:
+            mark3x = int(input("Enter how high third value marker ended or 0 for bust. "))
+        except ValueError:
+            print("Please choose a number!")
+            continue
+        if mark3x == 0:
+            break
+        if mark3x >= 0 and mark3x <= 13:
+            if board[mark3x-1][mark3y-2] >= 0:
+                for row in range (0,12):
+                    if turn == 3:
+                        if board[row][mark3y-2] >= 8:
+                            board[row][mark3y-2] -= 8
+                    if turn == 2:
+                        if board[row][mark3y-2] >= 12:
+                            board[row][mark3y-2] -= 4
+                        if board[row][mark3y-2] >= 4 and board[row][mark3y-2] < 8:
+                            board[row][mark3y-2] -= 4
+                    if turn == 1:
+                        if board[row][mark3y-2] >= 14:
+                            board[row][mark3y-2] -= 2
+                        if board[row][mark3y-2] >= 10 and board[row][mark3y-2] < 12:
+                            board[row][mark3y-2] -= 2
+                        if board[row][mark3y-2] >= 6 and board[row][mark3y-2] < 8:
+                            board[row][mark3y-2] -= 2
+                        if board[row][mark3y-2] >= 2 and board[row][mark3y-2] < 4:
+                            board[row][mark3y-2] -= 2
+                board[mark3x-1][mark3y-2] += 2**(turn)
+                break
+            else:
+                print("Please choose space on the board.")
+                continue
+            
+    #Print the board
+    printBoard(board)
+    
+    #Increment the turn
+    if turn < players:
+         turn += 1
+    else:
+         turn = 1
 
 endProgram = input("Press Enter to end the game")
 while(endProgram == None):
