@@ -25,12 +25,23 @@ def rollDice():
         roll[i] = randint(1,6)
     return roll
 
+def pairDice(roll):
+    pair1 = roll[0] + roll[1]
+    pair2 = roll[2] + roll[3]
+    return pair1, pair2
+
 #------------------------------------------------------#
 
 #-------------------------Main----------------------------#
 for i in range(0,10):
     roll = rollDice();
     print(roll)
+    pair1,pair2 = pairDice(roll)
+    print(pair1,pair2)
+    
+endProgram = input("Press Enter to end the game")
+while(endProgram == None):
+    continue
 
 #--------------------------------------------------------#
     
